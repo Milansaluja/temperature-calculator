@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>celcius to farenehit</title>
+    <style>
+        body {
+            background-color: rgb(133 165 82);
+        }
+
+
+        .top_main {
+            width: 100%;
+            height: 100vh;
+            /* border: 2px solid red; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top_main h1 {
+            color: rgb(93, 243, 93);
+            background-color: rgba(0, 0, 0, 0.089);
+            padding: 5px;
+        }
+
+        .main {
+            /* background-color: #1c1212; */
+            background-color: rgba(255, 255, 255, 0.11);
+            box-shadow: 0px 0px 10px #7c7373;
+            /* backdrop-filter: blur(10px); */
+            border: 1px solid black;
+            width: 50vw;
+            display: flex;
+            height: 50vw;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .input1,
+        .input2 {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+        }
+
+        @media (max-width:768px) {
+            .main {
+                width: 52vw;
+                height: 52vw;
+            }
+        }
+
+        @media (max-width:540px) {
+            .main {
+                width: 80vw;
+                height: 80vw;
+            }
+        }
+
+        @media (max-width:430px) {
+            .main {
+                width: 95vw;
+                height: 95vw;
+            }
+        }
+
+        @media (max-width:390px) {
+
+            .input1,
+            .input2 {
+                width: 42vw;
+            }
+        }
+
+        @media (max-width:320px) {
+
+            .top_main h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top_main">
+        <h1>TEMP-CALCULATOR</h1>
+        <div class="main">
+            <div class="input1">
+                <input type="number" id="num">
+                <select id="options">
+                    <option value="degree celcius">Degree Celcius</option>
+                    <option value="farenehit">Farenehit</option>
+                    <option value="kelvin">kelvin</option>
+                </select>
+            </div> &nbsp;
+
+            <span>=</span> &nbsp;
+
+            <div class="input2">
+                <input type="number" id="val">
+
+                <select id="options2">
+                    <option value="farenehit">Farenehit</option>
+                    <option value="degree celcius">Degree Celcius</option>
+                    <option value="kelvin">kelvin</option>
+                </select>
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        // A GLOBAL VARIBALES.
+
+        let a = document.getElementById("num");
+        let b = document.getElementById("val");
+
+        let c = document.querySelector("#options");
+        let d = document.querySelector("#options2");
+
+
+        // FUNCTIONS FOR INPUT (A).........
+
+        function farenehit() {
+
+            let a1 = parseInt(a.value);
+            // (!isNaN),it is a predefined function in js checks whether a integer is number or not...is it is num it will follow the if condition,and if it is false it will follow the else condition... 
+            if (!isNaN(a1)) {
+                //  this formula convert degree-celcius to farenehit  ...
+                let a2 = (a1 * 9 / 5) + 32;
+                b.value = a2;
+            }
+
+            else { b.value = "" }
+        }
+
+        function degree() {
+
+            let a1 = parseFloat(a.value);
+            if (!isNaN(a1)) {
+                //  this formula convert farenehit to degree-celcius ...
+                let a2 = (a1 - 32) * 5 / 9;
+                b.value = a2;
+            }
+
+            else { b.value = "" }
+        }
+
+        function degree_to_kelvin() {
+
+            let a1 = parseInt(a.value);
+            if (!isNaN(a1)) {
+                let a2 = a1 + 273.15;
+
+                b.value = a2;
+            }
+
+            else { b.value = "" }
+        }
+
+        function farenehit_to_kelvin() {
+
+            let a1 = parseInt(a.value);
+            if (!isNaN(a1)) {
+                let a2 = (a1 - 32) * 5 / 9 + 273.15;
+
+                b.value = a2;
+            }
+
+            else { b.value = "" }
+        }
+
+
+        function kelvin_to_degree() {
+
+            let a1 = parseFloat(a.value);
+            if (!isNaN(a1)) {
+                let a2 = (a1 - 273.15)
+
+                b.value = a2;
+            }
+
+            else { b.value = "" }
+        }
+
+
+        function kelvin_to_farenehit() {
+
+            let a1 = parseFloat(a.value);
+            if (!isNaN(a1)) {
+                let a2 = (a1 - 273.15) * 9 / 5 + 32
+
+                b.value = a2;
+            }
+
+            else { b.value = "" }
+        }
+
+
+        // FUNCTIONS FOR INPUT (B).......
+
+        function farenehit_repeat() {
+
+            let b1 = parseInt(b.value);
+
+            if (!isNaN(b1)) {
+                let b2 = (b1 * 9 / 5) + 32;
+                a.value = b2;
+            }
+
+            else { a.value = "" }
+        }
+
+        function degree_repeat() {
+
+            let b1 = parseFloat(b.value);
+            if (!isNaN(b1)) {
+                let b2 = (b1 - 32) * 5 / 9;
+                a.value = b2;
+            }
+
+            else { a.value = "" }
+        }
+
+        function degree_to_kelvin_repeat() {
+
+            let b1 = parseInt(b.value);
+            if (!isNaN(b1)) {
+                let b2 = b1 + 273.15;
+
+                a.value = b2;
+            }
+
+            else { a.value = "" }
+        }
+
+        function farenehit_to_kelvin_repeat() {
+
+            let b1 = parseInt(b.value);
+            if (!isNaN(b1)) {
+                let b2 = (b1 - 32) * 5 / 9 + 273.15;
+
+
+                a.value = b2;
+            }
+
+            else { a.value = "" }
+        }
+
+        function kelvin_to_degree_repeat() {
+
+            let b1 = parseInt(b.value);
+            if (!isNaN(b1)) {
+                let b2 = b1 - 273.15;
+
+                a.value = b2;
+            }
+
+            else { a.value = "" }
+        }
+
+        function kelvin_to_farenehit_repeat() {
+
+            let b1 = parseInt(b.value);
+            if (!isNaN(b1)) {
+                let b2 = (b1 - 273.15) * 9 / 5 + 32;
+
+
+                a.value = b2;
+            }
+
+            else { a.value = "" }
+        }
+
+
+
+        // INPUT FUNCTIONS...............
+
+        // for input (A)........
+
+        a.addEventListener("input", function () {
+            if ((c.value === "degree celcius") && (d.value === "kelvin")) {
+                degree_to_kelvin();
+            }
+            else if ((c.value === "farenehit") && (d.value === "kelvin")) {
+                farenehit_to_kelvin();
+            }
+
+            else if ((c.value === "kelvin") && (d.value === "degree celcius")) {
+                kelvin_to_degree();
+            }
+
+            else if (c.value === "degree celcius") {
+                farenehit();
+            }
+            else if (c.value === "farenehit") {
+                degree();
+            }
+            else if (c.value === "kelvin") {
+                kelvin_to_farenehit();
+            }
+        })
+
+
+        // for input (B) .......
+
+        b.addEventListener("input", function () {
+
+            if ((d.value === "degree celcius") && (c.value === "kelvin")) {
+                degree_to_kelvin_repeat();
+            }
+            else if ((d.value === "farenehit") && (c.value === "kelvin")) {
+                farenehit_to_kelvin_repeat();
+            }
+
+            else if ((d.value === "kelvin") && (c.value === "degree celcius")) {
+                kelvin_to_degree_repeat();
+            }
+            else if (d.value === "degree celcius") {
+
+                farenehit_repeat();
+            }
+            else if (d.value === "farenehit") {
+                degree_repeat();
+            }
+            else if (d.value === "kelvin") {
+                kelvin_to_farenehit_repeat();
+            }
+        });
+
+
+
+        //CHANGE FUNCTIONS...............FOR SELECT OPTION (C)....... 
+
+        c.addEventListener("change", function () {
+
+            if (c.value === "kelvin" && d.value === "degree celcius") {
+                kelvin_to_degree();
+            }
+
+            else if (c.value === "kelvin") {
+
+                d.value = "farenehit";
+                kelvin_to_farenehit();
+            }
+
+            else if (c.value === "degree celcius") {
+
+                d.value = "farenehit";
+
+                farenehit();
+
+            }
+            else if (c.value === "farenehit" && d.value === "kelvin") {
+
+                farenehit_to_kelvin();
+
+            }
+            else if (c.value === "farenehit") {
+
+                d.value = "degree celcius";
+                degree();
+            }
+            else {
+
+                d.value = "";
+            }
+        });
+
+
+        // FOR SELECT OPTION (D)....... 
+
+        d.addEventListener("change", function () {
+
+            if ((d.value === "kelvin") && (c.value === "farenehit")) {
+
+                farenehit_to_kelvin();
+            }
+            else if ((d.value === "degree celcius") && (c.value === "kelvin")) {
+
+                kelvin_to_degree();
+            }
+            else if ((d.value === "farenehit") && (c.value === "kelvin")) {
+
+                kelvin_to_farenehit()
+            }
+
+            else if (d.value === "degree celcius") {
+
+                c.value = "farenehit";
+
+                degree();
+            }
+            else if (d.value === "farenehit") {
+
+                c.value = "degree celcius";
+
+                degree_repeat()
+            }
+            else if (d.value === "kelvin") {
+
+                c.value = "degree celcius";
+
+                degree_to_kelvin()
+            }
+            else {
+
+                c.value = "";
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
